@@ -8,8 +8,39 @@ namespace WFClasses
 {
     class Comunas
     {
-        public int Id { get; set; }
-        public string Descripcion { get; set; }
+        public int Id
+        {
+            get
+            {
+                return Id;
+            }
+            set
+            {
+                /* Validamos que el ID de la comuna solo contenga numeros.
+                 * Estos valores son validados e impresos desde la clase de negocio */
+                if (Negocio.ContieneLetras(value.ToString()))
+                    throw new Exception("El Id de la comuna solo puede contener numeros");
+                else
+                    this.Id = value;
+
+            }
+        }
+        public string Descripcion
+        {
+            get
+            {
+                return Descripcion;
+            }
+            set
+            {
+                /* Verificamos que la descripcion de la comuna no exceda el máximo de caracteres.
+                 * Este valor es validado e impreso desde la clase de negocio */
+                if (value.Length > Negocio.MAXDESCRIPCION)
+                    throw new Exception("La descripción de la comuna no puede ser mayor a " + Negocio.MAXDESCRIPCION + " caracteres.");
+                else
+                    this.Descripcion = value;
+            }
+        }
 
         /// <summary>
         /// Creamos una instancia de la clase

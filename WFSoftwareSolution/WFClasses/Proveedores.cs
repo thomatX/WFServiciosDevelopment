@@ -8,7 +8,22 @@ namespace WFClasses
 {
     class Proveedores
     {
-        public int Id { get; set; }
+        public int Id {
+            get
+            {
+                return Id;
+            }
+            set
+            {
+                /* Validamos que el ID solo contenga numeros.
+                 * Estos valores son validados e impresos desde la clase de negocio */
+                if (Negocio.ContieneLetras(value.ToString()))
+                    throw new Exception("El id solo puede contener numeros");
+                else
+                    this.Id = value;
+
+            }
+        }
         public string Nombre {
             get
             {
@@ -16,10 +31,10 @@ namespace WFClasses
             }
             set
             {
-                /* Verificamos que el nombre del producto no exceda el máximo de caracteres.
+                /* Verificamos que el nombre del proveedor no exceda el máximo de caracteres.
                  * Este valor es validado e impreso desde la clase de negocio */
                 if (value.Length > Negocio.MAXNOMBRE)
-                    throw new Exception("El nombre del producto no puede ser mayor a " + Negocio.MAXNOMBRE + " caracteres");
+                    throw new Exception("El nombre del proveedor no puede ser mayor a " + Negocio.MAXNOMBRE + " caracteres");
                 else
                     this.Nombre = value;
 
@@ -33,7 +48,7 @@ namespace WFClasses
             }
             set
             {
-                /* Verificamos que el telefono del producto no exceda el máximo de caracteres.
+                /* Verificamos que el telefono del proveedor no exceda el máximo de caracteres.
                  * Validamos que el telefono solo contenga numeros.
                  * Estos valores son validados e impresos desde la clase de negocio */
                 if (value.Length > Negocio.MAXTELEFONO)
@@ -45,6 +60,24 @@ namespace WFClasses
 
             }
         }
+
+        public string Email
+        {
+            get
+            {
+                return Email;
+            }
+            set
+            {
+                /* Verificamos que el email del proveedor no exceda el máximo de caracteres.
+                 * Estos valores son validados e impresos desde la clase de negocio */
+                if (value.Length > Negocio.MAXEMAIL)
+                    throw new Exception("El email del proveedor no puede ser mayor a " + Negocio.MAXEMAIL + " caracteres");
+                else
+                    this.Email = value;
+            }
+        }
+
         public string PaginaWeb {
             get
             {
@@ -52,7 +85,7 @@ namespace WFClasses
             }
             set
             {
-                /* Verificamos que la pagina del producto no exceda el máximo de caracteres.
+                /* Verificamos que la pagina del proveedor no exceda el máximo de caracteres.
                  * Estos valores son validados e impresos desde la clase de negocio */
                 if (value.Length > Negocio.MAXPAGINAWEB)
                     throw new Exception("La página web del proveedor no puede contener más de " + Negocio.MAXPAGINAWEB + " caracteres");
@@ -68,7 +101,7 @@ namespace WFClasses
             }
             set
             {
-                /* Verificamos que la direccion del producto no exceda el máximo de caracteres.
+                /* Verificamos que la direccion del proveedor no exceda el máximo de caracteres.
                  * Estos valores son validados e impresos desde la clase de negocio */
                 if (value.Length > Negocio.MAXDESCRIPCION)
                     throw new Exception("La dirección del proveedor no puede ser mayor a " + Negocio.MAXDESCRIPCION + " caracteres");
@@ -77,6 +110,7 @@ namespace WFClasses
 
             }
         }
+
         public string Direccion2
         {
             get
@@ -85,8 +119,9 @@ namespace WFClasses
             }
             set
             {
-                /* Verificamos que la direccion del producto no exceda el máximo de caracteres.
-                 * Estos valores son validados e impresos desde la clase de negocio */
+                /* Verificamos que la direccion2 del proveedor no exceda el máximo de caracteres.
+                 * Estos valores son validados e impresos desde la clase de negocio 
+                 * Este atributo no es obligatorio. */
                 if (value.Length > Negocio.MAXDESCRIPCION)
                     throw new Exception("La dirección 2 del proveedor no puede ser mayor a " + Negocio.MAXDESCRIPCION + " caracteres");
                 else

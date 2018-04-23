@@ -8,7 +8,22 @@ namespace WFClasses
 {
     class Productos
     {
-        public int Id { get; set; }
+        public int Id {
+            get
+            {
+                return Id;
+            }
+            set
+            {
+                /* Validamos que el ID del producto solo contenga numeros.
+                 * Estos valores son validados e impresos desde la clase de negocio */
+                if (Negocio.ContieneLetras(value.ToString()))
+                    throw new Exception("El Id del producto solo puede contener numeros");
+                else
+                    this.Id = value;
+
+            }
+        }
         public string Nombre {
             get
             {

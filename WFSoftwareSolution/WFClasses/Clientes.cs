@@ -8,12 +8,108 @@ namespace WFClasses
 {
     public class Clientes
     {
-        public int Id { get; set; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public string Direccion { get; set; }
-        public string Email { get; set; }
-        public string Telefono { get; set; }
+        public int Id
+        {
+            get
+            {
+                return Id;
+            }
+            set
+            {
+                /* Validamos que el ID del cliente solo contenga numeros.
+                 * Estos valores son validados e impresos desde la clase de negocio */
+                if (Negocio.ContieneLetras(value.ToString()))
+                    throw new Exception("El Id del cliente solo puede contener numeros");
+                else
+                    this.Id = value;
+
+            }
+        }
+        public string Nombre {
+            get
+            {
+                return Nombre;
+            }
+            set
+            {
+                /* Verificamos que el nombre del cliente no exceda el máximo de caracteres.
+                 * Este valor es validado e impreso desde la clase de negocio */
+                if (value.Length > Negocio.MAXNOMBRE)
+                    throw new Exception("El nombre del cliente no puede ser mayor a " + Negocio.MAXNOMBRE + " caracteres");
+                else
+                    this.Nombre = value;
+
+            }
+        }
+        public string Apellido
+        {
+            get
+            {
+                return Apellido;
+            }
+            set
+            {
+                /* Verificamos que el nombre del cliente no exceda el máximo de caracteres.
+                 * Este valor es validado e impreso desde la clase de negocio */
+                if (value.Length > Negocio.MAXAPELLIDO)
+                    throw new Exception("El apellido del producto no puede ser mayor a " + Negocio.MAXAPELLIDO + " caracteres");
+                else
+                    this.Apellido = value;
+
+            }
+        }
+        public string Direccion
+        {
+            get
+            {
+                return Direccion;
+            }
+            set
+            {
+                /* Verificamos que la direccion del cliente no exceda el máximo de caracteres.
+                 * Estos valores son validados e impresos desde la clase de negocio */
+                if (value.Length > Negocio.MAXDESCRIPCION)
+                    throw new Exception("La dirección del cliente no puede ser mayor a " + Negocio.MAXDESCRIPCION + " caracteres");
+                else
+                    this.Nombre = value;
+
+            }
+        }
+        public string Email
+        {
+            get
+            {
+                return Email;
+            }
+            set
+            {
+                /* Verificamos que el email del cliente no exceda el máximo de caracteres.
+                 * Estos valores son validados e impresos desde la clase de negocio */
+                if (value.Length > Negocio.MAXEMAIL)
+                    throw new Exception("El email del cliente no puede ser mayor a " + Negocio.MAXEMAIL + " caracteres");
+                else
+                    this.Email = value;
+            }
+        }
+        public string Telefono {
+            get
+            {
+                return Telefono;
+            }
+            set
+            {
+                /* Verificamos que el telefono del cliente no exceda el máximo de caracteres.
+                 * Validamos que el telefono solo contenga numeros.
+                 * Estos valores son validados e impresos desde la clase de negocio */
+                if (value.Length > Negocio.MAXTELEFONO)
+                    throw new Exception("El telefono del cliente no puede ser mayor a " + Negocio.MAXTELEFONO + " caracteres");
+                else if (Negocio.ContieneLetras(value))
+                    throw new Exception("El telefono solo puede contener numeros");
+                else
+                    this.Nombre = value;
+
+            }
+        }
         public int IdComuna { get; set; }
         public int IdVendedor { get; set; }
 
