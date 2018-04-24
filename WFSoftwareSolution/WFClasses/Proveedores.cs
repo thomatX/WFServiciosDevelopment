@@ -18,7 +18,7 @@ namespace WFClasses
                 /* Validamos que el ID solo contenga numeros.
                  * Estos valores son validados e impresos desde la clase de negocio */
                 if (Negocio.ContieneLetras(value.ToString()))
-                    throw new Exception("El id solo puede contener numeros");
+                    throw new Exception("El Id del proveedor solo puede contener numeros");
                 else
                     this.Id = value;
 

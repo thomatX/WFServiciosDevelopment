@@ -49,10 +49,10 @@ namespace WFClasses
             }
             set
             {
-                /* Verificamos que el nombre del cliente no exceda el máximo de caracteres.
+                /* Verificamos que el apellido del cliente no exceda el máximo de caracteres.
                  * Este valor es validado e impreso desde la clase de negocio */
                 if (value.Length > Negocio.MAXAPELLIDO)
-                    throw new Exception("El apellido del producto no puede ser mayor a " + Negocio.MAXAPELLIDO + " caracteres");
+                    throw new Exception("El apellido del cliente no puede ser mayor a " + Negocio.MAXAPELLIDO + " caracteres");
                 else
                     this.Apellido = value;
 
@@ -104,7 +104,7 @@ namespace WFClasses
                 if (value.Length > Negocio.MAXTELEFONO)
                     throw new Exception("El telefono del cliente no puede ser mayor a " + Negocio.MAXTELEFONO + " caracteres");
                 else if (Negocio.ContieneLetras(value))
-                    throw new Exception("El telefono solo puede contener numeros");
+                    throw new Exception("El telefono del cliente solo puede contener numeros");
                 else
                     this.Nombre = value;
 
